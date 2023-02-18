@@ -28,39 +28,42 @@ const workState = [
 
 const divAnimate = {
     hidden: {
-        x: -100,
+        x: -250,
         opacity: 0,
     },
     visible: (custom: any) => (
         {
             x: 0,
             opacity: 1,
-            transition: { delay: custom * 0.3 }
+            transition: { delay: custom * 0.5 }
         }
     )
 }
 
 const Works = () => {
     return (
-        <div className={s.wrapper}>
+        <div id='work' className={s.wrapper}>
             <div className={s.flex_vertical_left_top}>
                 <div className={s.overline_16px}>ПРОЙДЕННЫЕ КУРСЫ</div>
                 <h2 className={s.heading_55px}>Курсы которые я проходил в учебных целях.</h2>
             </div>
-            <div className={s.w_layout_grid__experience_grid}>
+            <motion.div
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true, amount: 0.5 }}
+                className={s.w_layout_grid__experience_grid}>
                 {workState.map(k =>
                     <motion.div
-                        initial='hidden'
-                        whileInView='visible'
-                        viewport={{ once: true, amount: 0.5 }}
+                        custom={k.id}
+                        variants={divAnimate}
                         key={k.id} className={s.experience_block}>
-                        <motion.div custom={1} variants={divAnimate} className={s.number}>{k.number}</motion.div>
-                        <motion.h3 custom={2} variants={divAnimate} className={s.heading_24px}>
-                            <span className={s.pink}>{k.chanel}</span>, {k.name}</motion.h3>
-                        <motion.p custom={3} variants={divAnimate} className={s.paragraph_16px}>{k.description}</motion.p>
+                        <div className={s.number}>{k.number}</div>
+                        <h3 className={s.heading_24px}>
+                            <span className={s.pink}>{k.chanel}</span>, {k.name}</h3>
+                        <p className={s.paragraph_16px}>{k.description}</p>
                     </motion.div>
                 )}
-            </div>
+            </motion.div>
         </div>
     );
 };

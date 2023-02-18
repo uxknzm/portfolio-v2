@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './Contacts.module.css'
 import emailjs from 'emailjs-com';
-import { Form, Input, TextArea, Button } from 'semantic-ui-react';
+import { Form, Input, TextArea } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 
 
@@ -30,13 +31,32 @@ const Contacts = () => {
       });
     e.target.reset()
   };
+
+  const contactAnimate = {
+    hidden: {
+      x: -250,
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+    }
+  }
+
   return (
-    <div className={s.forms_section}>
+    <motion.div
+      id='contacts'
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: true, amount: 0.5 }}
+      className={s.forms_section}>
       <div className={s.wrapper_v2__forms_grid}>
-        <div className={s.normal_wrapper}>
+        <motion.div
+          variants={contactAnimate}
+          className={s.normal_wrapper}>
           <h2 className={s.heading_55px__24px_bottom}>Напиши мне</h2>
           <p className={s.paragraph_18px__light_grey}>Теперь, когда вы много знаете обо мне, дайте мне знать, если вам интересно работать со мной.</p>
-        </div>
+        </motion.div>
         <div className={s.form_block__w_form}>
           <Form onSubmit={handleOnSubmit}>
             <label className={s.paragraph_16px__white}>Имя</label>
@@ -62,11 +82,11 @@ const Contacts = () => {
               name='user_message'
               required
             />
-            <Button className={s.form_button__w_button} type='submit'>Отправить</Button>
+            <motion.button whileHover={{ scale: 1.1 }} className={s.form_button__w_button} type='submit'>Отправить</motion.button>
           </Form>
         </div>
       </div>
-    </div >
+    </motion.div >
   );
 };
 

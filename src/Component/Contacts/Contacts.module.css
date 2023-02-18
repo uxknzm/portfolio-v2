@@ -10,7 +10,7 @@
     margin-left: auto;
     display: grid;
     grid-auto-columns: 1fr;
-    grid-column-gap: 24px;
+    grid-column-gap: 50px;
     grid-row-gap: 16px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -33,6 +33,10 @@
     color: #8491a0;
     margin-top: 0;
     margin-bottom: 10px;
+}
+
+.normal_wrapper {
+    margin-right: 10px;
 }
 
 .form_block__w_form {
@@ -62,6 +66,7 @@
 }
 
 .form_button__w_button {
+    border-radius: 10px;
     cursor: pointer;
     width: 100%;
     padding-top: 24px;
@@ -103,4 +108,19 @@ textarea {
     line-height: 1.42857143;
     vertical-align: middle;
     overflow: auto;
+}
+
+@media screen and (max-width: 575px) {
+    .wrapper_v2__forms_grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .heading_55px__24px_bottom {
+        font-size: 25px;
+    }
+    .paragraph_18px__light_grey {
+        font-size: 15px;
+    }
 }
