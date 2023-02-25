@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Project = ({ id, title, gitHubRepo, demo, image }: any) => {
     return (
-        <div className="project" key={id}>
+        <div className="project">
             <div className="portfolio-item">
                 <div className="image">
                     <img src={image} alt={title} />
